@@ -1,0 +1,1 @@
+""" Motor control class that builds on motor command class"""

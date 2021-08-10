@@ -1,0 +1,1 @@
+""" Serial class for UART communication """

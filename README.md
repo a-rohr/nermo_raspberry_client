@@ -1,3 +1,3 @@
-# nermo_client
+# mouse_controller
 
-Local ROS client running on Nermo. Contains the low level controller and client node
+ROS package - mouse controller for Nermo

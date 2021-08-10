@@ -1,0 +1,17 @@
+<!--
+
+
+
+
+
+
+
+-->
+
+<launch>
+    <!--  -->
+
+    <!-- Start the playstation 4 joystick listener -->
+    <node name="mqtt_subscriber" pkg="nermo_client" type="mqtt_client.py" />
+    <node name="low_level_controller" pkg="nermo_client" type="low_level_controller.py" />
+</launch>
