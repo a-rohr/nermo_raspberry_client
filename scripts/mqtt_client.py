@@ -10,7 +10,7 @@ import paho.mqtt.client as mqtt
 
 from std_msgs.msg import Empty, _String
 from rospy.numpy_msg import numpy_msg
-from mouse_controller.msg import Floats, mouse_sensors
+from nermo_client.msg import Floats, mouse_sensors
 
 import json
 

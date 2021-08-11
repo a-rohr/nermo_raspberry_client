@@ -54,8 +54,6 @@ catkin_python_setup()
 add_message_files(
   FILES
   Floats.msg
-  mouse_sensors.msg
-  desired_cmd.msg
 )
 
 ## Generate services in the 'srv' folder

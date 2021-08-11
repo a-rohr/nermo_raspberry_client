@@ -1,3 +1,3 @@
-# mouse_controller
+# nermo_client
 
-ROS package - mouse controller for Nermo
+ROS package - client running on Nermo physical mouse
