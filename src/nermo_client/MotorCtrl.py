@@ -32,6 +32,18 @@ class Motors(CMouseCom):
         self.margin = 1
         self.motor_num = 12
 
+        self.id_tags = np.array([ID_FORELEFT_HIP, ID_FORELEFT_KNEE, 
+                                ID_FORERIGHT_HIP, ID_FORERIGHT_KNEE,
+                                ID_HINDLEFT_HIP, ID_HINDLEFT_KNEE,
+                                ID_HINDRIGHT_HIP, ID_HINDRIGHT_KNEE,
+                                ID_TAIL, ID_HEAD_PAN, ID_HEAD_TILT, ID_SPINE])
+        
+        self.offset_q = np.array([ 180.0, 180.0,
+                                 180.0, 180.0,
+                                 180.0, 180.0,
+                                 180.0, 180.0,
+                                 180.0, 180.0, 180.0, 180.0])
+
     def ctrl(self, cmd, targetPos):
 
         return False
@@ -45,6 +57,11 @@ class Motors(CMouseCom):
     def send_motor_msgs(self, q_values: np.ndarray):
         SetMotorPos = "SetMotorPos"
         for i in range(self.motor_num):
+            angle = self.offset_q[i] + q_values[i]*180.0/np.pi
+            # To Do
+            # Put all the IDs into an addressable array -> self.id_tags[] 
+            # Adjust the offset -> self.offset_q[] = 180 (neutral is 180)
+            self.ProcessSpine(SetMotorPos, self.id_tags[i], self.to_remap(angle), 1)
             self.ProcessSpine(SetMotorPos, ID_FORELEFT_HIP, self.to_remap(q_values[A_FORELEFT_HIP]), 1)
             self.ProcessSpine(SetMotorPos, ID_FORELEFT_KNEE, self.to_remap(q_values[A_FORELEFT_KNEE]), 1)
             self.ProcessSpine(SetMotorPos, ID_FORERIGHT_HIP, self.to_remap(q_values[A_FORERIGHT_HIP]), 1)
