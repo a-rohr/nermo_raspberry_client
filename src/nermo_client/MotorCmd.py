@@ -37,6 +37,7 @@ class CMouseCom(object):
         super(CMouseCom, self).__init__()
         self.toUART = Port(SerialPort, BaudRate)
 
+        print("Motor Command Initialized")
         self.StoreArraySensor = [[[0 for i in range(self.storageBuffer)]\
             for j in range (self.storageVariablesKnee + self.storageVariablesFoot)]\
             for k in range(self.storageSensorBoards)]

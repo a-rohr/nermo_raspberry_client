@@ -26,6 +26,11 @@ class Low_Level_Controller:
         """ Callback for the q_values topic and written to the internal q_values """
         self.q_values = np.array((data.data))
 
+    def shutdown_callback(self):
+        print("Closing UART connection & motor power off")
+        self.motor_ctrl.shutdown_ctrl()
+        print("Shutting down ros node")
+
     def low_level_controller_loop(self, rate: int) -> None:
         """ Low level controller ROS loop """
 
@@ -34,9 +39,9 @@ class Low_Level_Controller:
 
         rospy.Subscriber('q_values', Float32MultiArray, self.callback_q_values, queue_size = 1)
         count = 0
-        while(not rospy.is_shutdown()):         
+        while(not rospy.is_shutdown(self.shutdown_callback)):         
             # Main loop
-            self.motor_ctrl.send_motor_msgs(self.q_values)
+            self.motor_ctrl.send_motor_msgs("SetMotorPos", self.q_values)
             r.sleep()
 
     def main(self):
