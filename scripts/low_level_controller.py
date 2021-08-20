@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 import numpy as np
-import rospy 
+import rospy
 
 from std_msgs.msg import Float32MultiArray
 import socket
