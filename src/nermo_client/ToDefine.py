@@ -2,19 +2,19 @@
 #/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #defines for Motors in Array
 A_TIMESTAMP = 0
-A_FORELEFT_HIP = 1
-A_FORELEFT_KNEE = 2
-A_FORERIGHT_HIP = 3
-A_FORERIGHT_KNEE = 4
-A_HINDLEFT_HIP = 5
-A_HINDLEFT_KNEE = 6
-A_HINDRIGHT_HIP = 7
-A_HINDRIGHT_KNEE = 8
-A_SPINE = 9
-A_TAIL = 10
-A_SPINE_FLEX = 11
-A_HEAD_PAN = 12
-A_HEAD_TILT = 13
+A_FORELEFT_HIP = 0
+A_FORELEFT_KNEE = 1
+A_FORERIGHT_HIP = 2
+A_FORERIGHT_KNEE = 3
+A_HINDLEFT_HIP = 4
+A_HINDLEFT_KNEE = 5
+A_HINDRIGHT_HIP = 6
+A_HINDRIGHT_KNEE = 7
+A_TAIL = 8
+A_HEAD_PAN = 9
+A_HEAD_TILT = 10
+A_SPINE = 11
+A_SPINE_FLEX = 12
 
 #/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #defines for Motors in File Array

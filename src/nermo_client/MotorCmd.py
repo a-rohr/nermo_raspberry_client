@@ -1,5 +1,5 @@
 """ Motor command class - setup for command the motors"""
-from TheSerial import *
+from nermo_client.TheSerial import *
 import time 
 
 MAX_RECIEVE_LENGTH = 255
@@ -48,6 +48,7 @@ class CMouseCom(object):
             for j in range(self.storageVariablesPID)] for k in range(self.storageServoBoards)]
         self.position_index = [0]*self.storageServoBoards
         self.pid_index =[0]*self.storageServoBoards
+
     def shutdown(self):
         self.toUART.shutdown()
 
@@ -56,12 +57,11 @@ class CMouseCom(object):
             for j in range(3):
                 for k in range(self.storageBuffer):
                     self.StoreArraySensor[i][j][k] = 0
-            self.sensor_index[i][0] = 0;
-            self.sensor_index[i][1] = 0;
-
+            self.sensor_index[i][0] = 0
+            self.sensor_index[i][1] = 0
 
     def setConsoleCcmnd(self, cmd, val1 = 0, val2 = 0, val3 = 0):
-        self.ReceiveMsg(cmd.command, val1, val2, val3);
+        self.ReceiveMsg(cmd.command, val1, val2, val3)
     
     def ProcessSpine(self, cmd, val1, val2 = 0, val3 = 0):
         if cmd == "SetMotorPos":
@@ -82,12 +82,15 @@ class CMouseCom(object):
     def setMotorOFF(self, tId):
         msg = ":%02d!P=OFF\n"%(tId)
         self.toUART.sendUartMessage(msg)
+
     def setMotorPwrOFF(self):
         msg = "!PS-\n"
         self.toUART.sendUartMessage(msg)
+
     def sendNL(self):
         msg = "\n"
         self.toUART.sendUartMessage(msg)
+
     def MotorPwrCycle(self):
         msg = "!PS-\n"
         self.toUART.sendUartMessage(msg)
@@ -149,6 +152,7 @@ class CMouseCom(object):
     def sendMotorSeial(self, tID, pos, speed):
         msg = ":%02d!P=%04x\n"%(tID, pos)
         self.toUART.sendUartMessage(msg)
+
     def setMotorLed(self, tID, state): 	# 0,1,2
         msg = "\n"
         if state == 1:		# Switch on
@@ -189,6 +193,7 @@ class CMouseCom(object):
             return 2
         if tID == 13:
             return 3
+
     def clearFootPart(self, index):
         for i in range(self.storageBuffer):
             self.StoreArraySensor[index][2][i] = 0
@@ -196,8 +201,8 @@ class CMouseCom(object):
 
     def clearKneePart(self, index):
         for i in range(self.storageBuffer):
-            self.StoreArraySensor[index][0][i] = 0;
-            self.StoreArraySensor[index][1][i] = 0;
+            self.StoreArraySensor[index][0][i] = 0
+            self.StoreArraySensor[index][1][i] = 0
         self.sensor_index[index][0] = 0
 
     def convertHexToInt(self, digit):

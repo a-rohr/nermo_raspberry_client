@@ -1,8 +1,8 @@
 """ Motor control class that builds on motor command class"""
 
-from ToDefine import *
+from nermo_client.ToDefine import *
 
-from MotorCmd import *
+from nermo_client.MotorCmd import *
 
 import time
 import math
