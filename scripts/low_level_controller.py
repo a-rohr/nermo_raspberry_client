@@ -22,6 +22,7 @@ class Low_Level_Controller:
         SerialPort = "/dev/ttyAMA0"
         BaudRate = 1000000
         self.motor_ctrl = Motors(SerialPort, BaudRate)
+        rospy.on_shutdown(self.shutdown_callback)
 
     def callback_q_values(self, data):
         """ Callback for the q_values topic and written to the internal q_values """
@@ -40,7 +41,7 @@ class Low_Level_Controller:
 
         rospy.Subscriber('q_values', Float32MultiArray, self.callback_q_values, queue_size = 1)
         count = 0
-        while(not rospy.is_shutdown(self.shutdown_callback)):         
+        while(not rospy.is_shutdown()):         
             # Main loop
             self.motor_ctrl.send_motor_msgs("SetMotorPos", self.q_values)
             r.sleep()
