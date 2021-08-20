@@ -47,7 +47,7 @@ class Motors(CMouseCom):
     def rad_to_deg(self, val):
         return val*180.0/np.pi
 
-    def send_motor_msgs(self, command: str, q_values: np.ndarray):
+    def send_motor_msgs(self, command, q_values):
         
         for i in range(self.motor_num):
             angle = self.offset_q[i] + self.rad_to_deg(q_values[i])
