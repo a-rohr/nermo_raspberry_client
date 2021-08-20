@@ -32,7 +32,7 @@ class Low_Level_Controller:
         self.motor_ctrl.shutdown_ctrl()
         print("Shutting down ros node")
 
-    def low_level_controller_loop(self, rate: int) -> None:
+    def low_level_controller_loop(self, rate):
         """ Low level controller ROS loop """
 
         rospy.init_node("low_level_controller", anonymous=True)
