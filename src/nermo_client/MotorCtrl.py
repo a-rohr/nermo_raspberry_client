@@ -30,12 +30,14 @@ class Motors(CMouseCom):
                                  180.0, 180.0,
                                  180.0, 180.0, 180.0, 180.0])
 
+        self.zeroed_q_angles = np.zeros((12,))
+
     def ctrl(self, cmd, targetPos):
 
         return False
 
     def shutdown_ctrl(self):
-        self.ProcessSpine("MPwrOff",0)
+        self.send_motor_msgs("SetMotorOff", self.zeroed_q_angles)
         self.shutdown()
 
     def to_remap(self, val):
