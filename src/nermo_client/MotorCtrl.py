@@ -21,9 +21,9 @@ class Motors(CMouseCom):
         self.motor_num = 12
         self.id_tags = np.array([ID_FORELEFT_HIP, ID_FORELEFT_KNEE, 
                                 ID_FORERIGHT_HIP, ID_FORERIGHT_KNEE,
-                                ID_HINDLEFT_HIP, ID_HINDLEFT_KNEE,
-                                ID_HINDRIGHT_HIP, ID_HINDRIGHT_KNEE,
-                                ID_TAIL, ID_HEAD_PAN, ID_HEAD_TILT, ID_SPINE])
+                                ID_HINDLEFT_HIP, ID_HEAD_PAN,
+                                ID_HINDRIGHT_HIP, ID_HEAD_TILT,
+                                ID_TAIL, ID_HINDLEFT_KNEE, ID_HINDRIGHT_KNEE, ID_SPINE])
         self.offset_q = np.array([ 180.0, 180.0,
                                  180.0, 180.0,
                                  180.0, 180.0,
