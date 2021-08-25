@@ -30,6 +30,12 @@ class Motors(CMouseCom):
                                  180.0, 180.0,
                                  180.0, 180.0, 180.0, 180.0])
 
+        self.sign_change = np.array([-1.0, 1.0,
+                                     1.0, -1.0,
+                                     -1.0, -1.0,
+                                     1.0, -1.0,
+                                     1.0, 1.0, 1.0, -1.0])
+
         self.zeroed_q_angles = np.zeros((12,))
 
     def ctrl(self, cmd, targetPos):
@@ -43,8 +49,9 @@ class Motors(CMouseCom):
     def to_remap(self, val):
         maxPos = 4095
         maxDeg = 360
-        tMap = (maxPos * val) / maxDeg
-        return int(abs(tMap))
+        tMap = int((maxPos * val) / maxDeg)
+        tMap_f = max(0,min(tMap,maxPos-1))
+        return tMap_f
 
     def rad_to_deg(self, val):
         return val*180.0/np.pi
@@ -52,7 +59,7 @@ class Motors(CMouseCom):
     def send_motor_msgs(self, command, q_values):
         
         for i in range(self.motor_num):
-            angle = self.offset_q[i] + self.rad_to_deg(q_values[i])
+            angle = self.offset_q[i] + self.sign_change[i]*self.rad_to_deg(q_values[i])
             # To Do
             # Put all the IDs into an addressable array -> self.id_tags[] 
             # Adjust the offset -> self.offset_q[] = 180 (neutral is 180)
