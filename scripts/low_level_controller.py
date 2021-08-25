@@ -49,7 +49,7 @@ class Low_Level_Controller:
     def main(self):
         """ Main function - try to run the ROS node, otherwise pass """
         try:
-            rate = 50
+            rate = 30
             self.low_level_controller_loop(rate)
         except rospy.ROSInterruptException:
             pass
