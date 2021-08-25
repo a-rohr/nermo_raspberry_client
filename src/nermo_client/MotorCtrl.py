@@ -34,7 +34,7 @@ class Motors(CMouseCom):
                                      1.0, -1.0,
                                      -1.0, -1.0,
                                      1.0, -1.0,
-                                     1.0, 1.0, 1.0, -1.0])
+                                     1.0, 1.0, 1.0, -4.0])
 
         self.zeroed_q_angles = np.zeros((12,))
 
