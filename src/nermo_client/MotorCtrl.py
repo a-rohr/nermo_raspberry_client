@@ -31,8 +31,8 @@ class Motors(CMouseCom):
                                 ID_HINDRIGHT_KNEE, ID_HINDLEFT_KNEE, ID_FORERIGHT_HIP, ID_SPINE])
         self.offset_q = np.array([ 180.0, 120.0,
                                  180.0, 240.0,
-                                 180.0, 120.0,
-                                 180.0, 240.0,
+                                 180.0, 140.0,
+                                 180.0, 220.0,
                                  180.0, 180.0, 180.0, 180.0])
 
         self.sign_change = np.array([-1.0, 1.0,
