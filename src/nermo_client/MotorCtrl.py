@@ -19,11 +19,16 @@ class Motors(CMouseCom):
     def init_motor_parameters(self):
         """ Initialize all overall motor control parameters"""
         self.motor_num = 12
+
+        # Note how some servo IDs have been switched because of broken motors!
+        # Head tilt motor is used for front right hip
+        # Head pan motor is used for rear left knee
+        # Tail motor is used for rear right knee
         self.id_tags = np.array([ID_FORELEFT_HIP, ID_FORELEFT_KNEE, 
-                                ID_FORERIGHT_HIP, ID_FORERIGHT_KNEE,
+                                ID_HEAD_TILT, ID_FORERIGHT_KNEE,
                                 ID_HINDLEFT_HIP, ID_HEAD_PAN,
                                 ID_HINDRIGHT_HIP, ID_TAIL,
-                                ID_HINDRIGHT_KNEE, ID_HINDLEFT_KNEE, ID_HEAD_TILT, ID_SPINE])
+                                ID_HINDRIGHT_KNEE, ID_HINDLEFT_KNEE, ID_FORERIGHT_HIP, ID_SPINE])
         self.offset_q = np.array([ 180.0, 180.0,
                                  180.0, 180.0,
                                  180.0, 180.0,
